@@ -47,19 +47,9 @@ public class Student {
     /**
      *
      */
-    @ManyToMany
-    @JoinTable(
-            name = "student_wrote_in",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "year_id")
-    )
+    @ManyToMany(mappedBy = "studentsWhoWrote")
     private Set<Year> yearsWrote;
 
-    @ManyToMany
-    @JoinTable(
-            name = "student_is_in",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "level_id")
-    )
+    @ManyToMany(mappedBy = "studentsInLevel")
     private Set<Level> studentLevels;
 }

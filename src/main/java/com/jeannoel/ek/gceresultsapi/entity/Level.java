@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Data
@@ -27,6 +24,11 @@ public class Level {
     @Column(name = "level_name")
     private String levelName;
 
-    @ManyToMany(mappedBy = "studentLevels")
+    @ManyToMany
+    @JoinTable(
+            name = "level_student",
+            joinColumns = @JoinColumn(name = "level_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
     private Set<Student> studentsInLevel;
 }

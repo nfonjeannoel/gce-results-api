@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
@@ -31,6 +28,11 @@ public class Year {
     @Column(name = "year_value")
     private String yearValue;
 
-    @ManyToMany(mappedBy = "yearsWrote")
-    private Set<Student> studentWhoWrote;
+    @ManyToMany()
+    @JoinTable(
+            name = "year_student",
+            joinColumns = @JoinColumn(name = "year_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private Set<Student> studentsWhoWrote;
 }

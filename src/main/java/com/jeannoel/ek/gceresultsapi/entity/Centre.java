@@ -18,6 +18,12 @@ public class Centre {
     @Column(name = "centre_id")
     private Long centreId;
 
+    @Column(
+            name = "centre_number",
+            unique = true
+    )
+    private Long centreNumber;
+
     @Column(name = "centre_name")
     private String centreName;
 
