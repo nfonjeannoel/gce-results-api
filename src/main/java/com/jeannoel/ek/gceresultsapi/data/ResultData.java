@@ -25,6 +25,4 @@ public class ResultData {
     private String studentName;
     @JsonProperty("student_grades")
     private String studentGrades;
-
-
 }
